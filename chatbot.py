@@ -55,21 +55,39 @@ class EmpatheticMentalHealthChatbot:
         """
         if sentiment == 0:  # Negative sentiment
             return random.choice([
+                "That's unfortunate, but I'm here if you need anything.",
+                "I understand how you must feel, but lets hope for the best.",
                 "I'm sorry to hear that you're feeling this way. I'm here for you.",
                 "It sounds like you're going through a tough time. Please know that you're not alone.",
-                "I'm here to support you. Would you like to talk more about how you're feeling?"
+                "I'm here to support you. Would you like to talk more about how you're feeling?",
+                "It must be really hard for you. Stay strong champ!",
+                "I'm feeling sorry for you, I hope it gets better.",
+                "Take a moment to calm yourself. Would you like to tell more about it?",
+                "It must be sad to go through all this. But don't worry, I'm here for you."
             ])
         elif sentiment == 1:  # Positive sentiment
             return random.choice([
+                "I'm thrilled to hear that things are going so well for you.",
+                "Excellent! You must be thrilled.",
+                "That sounds fantastic!",
+                "You must be delighted.",
+                "I'm happy for you! Sounds like a good experience.",
                 "That's great to hear! I'm glad things are going well for you.",
                 "You sound like you're in a good place right now. Keep it up!",
-                "I'm happy to hear that you're feeling positive. Keep sharing your good moments!"
+                "I'm happy to hear that you're feeling positive. Keep sharing your good moments!",
+                "Sounds good."
             ])
         else:  # Neutral sentiment
             return random.choice([
+                "So would you like to talk more about it?",
+                "Thanks for sharing that with me.",
+                "That's interesting to know.",
+                "I'll keep that in mind.",
+                "Sure, sounds like I have heard it before.",
                 "I see. Could you tell me more about what's on your mind?",
                 "Thanks for sharing. I'm here to listen if you want to talk more.",
-                "Feel free to share more if you'd like. I'm here for you."
+                "Feel free to share more if you'd like. I'm here for you.",
+                "Sounds like a normal thing to do."
             ])
 
     def chat(self):
