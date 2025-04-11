@@ -7,4 +7,9 @@ numpy-2.2.4
 opencv-python-4.11.0.86
 deepface
 python 3.11.0
+transformers (version 4.0 or higher)
+datasets library
+torch
+chatbot dataset: heliosbrahma/mental_health_chatbot_dataset 
+bert model: distilbert-base-uncased-finetuned-sst-2-english
 _____________________________________________________________________
