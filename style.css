@@ -1,0 +1,159 @@
+body {
+  font-family: "Arial", sans-serif;
+  margin: 0;
+  background-color: #f7e7e1;
+  color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+  background: linear-gradient(135deg, #f0d5f8, #b8a7f0, #9bbfda);
+  animation: gradientShift 10s infinite;
+}
+
+.sparkle {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: #ffd1dc;
+  border-radius: 50%;
+  animation: sparkleMove 3s ease infinite;
+}
+@keyframes sparkleMove {
+  0% {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(100px, 200px);
+    opacity: 0;
+  }
+}
+.container {
+  width: 400px;
+  padding: 20px;
+  background: #fff198;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  text-align: center;
+  animation: fadeIn 1s ease-in-out;
+  position: relative;
+}
+
+header {
+  margin-bottom: 20px;
+}
+
+.minion-logo {
+  width: 400px;
+  position: absolute;
+  /*top: 20px;*/
+  left: -450px;
+  bottom: -220px;
+  animation: popUpBounce 2s ease-in-out forwards;
+}
+
+@keyframes popUpBounce {
+  0% {
+    bottom: -100px; /* Start off-screen below */
+    opacity: 0;
+  }
+  50% {
+    bottom: 30px; /* Pop up outside the chatbox */
+    opacity: 1;
+  }
+  70% {
+    bottom: 50px; /* Start the bounce */
+  }
+  80% {
+    bottom: 30px; /* Bounce downward */
+  }
+  90% {
+    bottom: 40px; /* Slight upward bounce */
+  }
+  100% {
+    bottom: 30px; /* Settle at the position */
+  }
+}
+
+.minion2-logo {
+  width: 250px;
+  position: absolute;
+  right: -450px;
+  bottom: -50px;
+  animation: popUpBounce 2s ease-in-out forwards;
+}
+
+.chat-box {
+  margin-bottom: 20px;
+  margin-right: 20px;
+}
+
+textarea {
+  width: 100%;
+  background-color: #c3f3ef;
+  font-family: "Arial", sans-serif;
+  height: 100px;
+  border-radius: 5px;
+  padding: 10px;
+  border: 3px solid #241da9;
+  outline: none;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+button {
+  padding: 10px 15px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  background-color: #78e9ff;
+  color: #333;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #ffc107;
+}
+
+footer {
+  margin-top: 20px;
+  font-size: 0.9em;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.emoji-container button {
+  font-size: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.emoji-container button:hover {
+  transform: scale(1.5);
+}

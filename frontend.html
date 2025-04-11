@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mitra</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Mitra</h1>
+        <img src="minioncute.png" alt="Minion" class="minion-logo" />
+        <img src="minion2.png" alt="Minion2" class="minion2-logo" />
+      </header>
+      <main>
+        <div class="chat-box">
+          <textarea
+            id="text-input"
+            placeholder="Type your message here..."
+          ></textarea>
+          <div class="buttons">
+            <button id="send-btn">Send</button>
+            <button id="mic-btn">
+              <img
+                src="mic.png"
+                alt="Microphone Icon"
+                style="width: 25px; height: 25px"
+              />
+            </button>
+            <button id="camera-btn">
+              <img
+                src="video.png"
+                alt="Microphone Icon"
+                style="width: 45px; height: 50px"
+              />
+            </button>
+          </div>
+        </div>
+        <div class="emoji-container">
+          <button onclick="showMood('😊')">😊</button>
+          <button onclick="showMood('😢')">😢</button>
+          <button onclick="showMood('😡')">😡</button>
+          <button onclick="showMood('😱')">😱</button>
+        </div>
+      </main>
+      <footer>
+        <p>We're here to support you 💛</p>
+      </footer>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
