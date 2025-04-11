@@ -11,6 +11,12 @@ An empathetic, supportive chatbot that you can talk to about your day and any ex
 
 Using Deepface, train the model.
 
-## Step 4: Specch recognition
+## Step 4: Speech recognition
 
 Model training using a RAVDESS dataset.
+
+## Enabling audio recording and sending to the backend
+
+Using websockets
+
+
