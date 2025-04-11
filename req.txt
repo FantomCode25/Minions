@@ -7,6 +7,7 @@ numpy-2.2.4
 opencv-python-4.11.0.86
 deepface
 python 3.11.0
+
 transformers (version 4.0 or higher)
 datasets library
 torch
