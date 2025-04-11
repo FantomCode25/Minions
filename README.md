@@ -7,7 +7,7 @@ A simple website.
 
 An empathetic, supportive chatbot that you can talk to about your day and any experiences you had, positive, negative, or neutral.
 
-## Sep 3: Detecting facial expressions
+## Step 3: Detecting facial expressions
 
 Using Deepface, train the model.
 
