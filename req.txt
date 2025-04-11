@@ -12,4 +12,10 @@ datasets library
 torch
 chatbot dataset: heliosbrahma/mental_health_chatbot_dataset 
 bert model: distilbert-base-uncased-finetuned-sst-2-english
+
+Set Up Your Environment: Install the required libraries, including OpenCV and DeepFace.
+Capture Video: Use OpenCV to access the webcam and capture video frames.
+Face Detection: Implement face detection using OpenCV's Haar cascades or DNN models.
+Emotion Recognition: Utilize the DeepFace library to analyze the detected faces and predict emotions.
+Display Results: Overlay the predicted emotions on the video feed in real-time.
 _____________________________________________________________________
