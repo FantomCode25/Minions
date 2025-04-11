@@ -1,0 +1,10 @@
+*Face*
+flask 2.2.3
+gdown pysocks 1.7.1
+keras
+mtcnn-0.1.0
+numpy-2.2.4
+opencv-python-4.11.0.86
+deepface
+python 3.11.0
+_____________________________________________________________________
