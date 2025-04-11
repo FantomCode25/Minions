@@ -4,8 +4,17 @@ import wave
 import os
 
 async def handle_connection(websocket, path):
-    print(f"WebSocket argument: {websocket}")
-    print(f"Path argument: {path}")
+    async for message in websocket:
+        # Example of saving binary audio data
+        with open("audio.wav", "wb") as audio_file:
+            audio_file.write(message)
+        print("Audio data received and saved.")
+        await websocket.send("Audio data processed!")
+    print(f"WebSocket: {websocket}")
+    print(f"Path: {path}")
+    await websocket.send("Connection successful")
+
+    await websocket.send("Hello from the server!")
     print("New client connected.")
     
     try:
@@ -33,11 +42,12 @@ async def handle_connection(websocket, path):
         print("Client disconnected.")
 
 async def main():
-    async with websockets.serve(handle_connection, "localhost", 8080)
-    print("WebSocket server running on ws://localhost:8080")
-    await asyncio.Future()  # Keeps the server running
+    async with websockets.serve(handle_connection, "localhost", 8080):
+        print("WebSocket server running on ws://localhost:8080/ws")
+        await asyncio.Future()  # Keeps the server running
 
 
 if __name__ == "__main__":
     asyncio.run(main())
+
 
