@@ -28,11 +28,11 @@
                 style="width: 25px; height: 25px"
               />
             </button>
-            <button id="camera-btn">
+            <button id="video-btn">
               <img
                 src="video.png"
-                alt="Microphone Icon"
-                style="width: 45px; height: 50px"
+                alt="Camera Icon"
+                style="width: 35px; height: 40px"
               />
             </button>
           </div>
@@ -43,11 +43,26 @@
           <button onclick="showMood('😡')">😡</button>
           <button onclick="showMood('😱')">😱</button>
         </div>
+        <div id="mic-status">Ready</div>
+        <div id="video-container" style="text-align: center; display: none">
+          <video
+            id="video"
+            autoplay
+            style="border: 2px solid black; width: 50%; margin-top: 20px"
+          ></video>
+        </div>
       </main>
       <footer>
-        <p>We're here to support you 💛</p>
+        <p>We're here to support you</p>
       </footer>
     </div>
+    <footer>
+      <div class="tooltip">
+        Hover on me!
+        <span class="tooltip-text"> Hello! You're amazing❤️</span>
+      </div>
+    </footer>
     <script src="script.js"></script>
+    <canvas id="video-canvas" style="display: none"></canvas>
   </body>
 </html>
