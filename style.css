@@ -108,8 +108,8 @@ textarea {
 }
 
 button {
-  padding: 10px 15px;
-  border-radius: 5px;
+  padding: 7px 17px;
+  border-radius: 10px;
   border: none;
   cursor: pointer;
   background-color: #78e9ff;
@@ -156,4 +156,36 @@ footer {
 
 .emoji-container button:hover {
   transform: scale(1.5);
+}
+
+.tooltip {
+  position: absolute;
+  bottom: 40px;
+  right: 650px;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.tooltip-text {
+  position: absolute;
+  bottom: 100%;
+  left: 50px;
+  width: 170px;
+  height: 20px;
+  transform: translateX(-50%);
+  padding: 5px;
+  background-color: #ffd966;
+  border-radius: 20px;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.tooltip:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
+
+#video-container {
+  display: none;
 }
