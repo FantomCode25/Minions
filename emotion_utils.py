@@ -1,31 +1,49 @@
 import cv2
-import random
+from deepface import DeepFace
+import datetime
+import csv
+import os
+import pyttsx3
 
-# Load Haar Cascade
-face_cascade = cv2.CascadeClassifier("haarcascade_frontalface_default.xml")
+# TTS engine
+engine = pyttsx3.init()
+engine.setProperty('rate', 150)
 
-# Emotion map
-emotions = ["happy", "sad", "angry", "surprise", "neutral"]
 emotion_messages = {
     "happy": "You look happy! Keep smiling 😊",
     "sad": "It's okay to feel sad. You're not alone 💙",
     "angry": "Take a deep breath, you're stronger than your anger 😌",
     "surprise": "Something surprised you? Hope it's good! 🌟",
+    "fear": "It's okay to be scared. You're safe now 🤗",
+    "disgust": "Ugh! Something grossed you out? 😅",
     "neutral": "You're calm and composed. Sending peace your way 🧘‍♀️"
 }
 
-# Detect emotion function
-def detect_emotion(frame):
-    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-    faces = face_cascade.detectMultiScale(gray, 1.3, 5)
+def speak(message):
+    engine.say(message)
+    engine.runAndWait()
 
-    if len(faces) == 0:
-        return "No Face Detected", "Please try again!"
+def log_to_csv(username, emotion, timestamp):
+    file_exists = os.path.isfile("user_data.csv")
+    with open("user_data.csv", mode="a", newline="") as file:
+        writer = csv.writer(file)
+        if not file_exists:
+            writer.writerow(["Username", "Timestamp", "Emotion"])
+        writer.writerow([username, timestamp, emotion])
 
-    # Take the first face detected
-    (x, y, w, h) = faces[0]
-    face_roi = gray[y:y+h, x:x+w]
+def detect_emotion_and_log(frame, username):
+    try:
+        result = DeepFace.analyze(frame, actions=['emotion'], enforce_detection=False)
+        dominant_emotion = result[0]['dominant_emotion']
+        message = emotion_messages.get(dominant_emotion, "You are unique ❤️")
+        
+        # Log the emotion
+        timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        log_to_csv(username, dominant_emotion, timestamp)
+        
+        # Speak the message
+        speak(message)
 
-    # Simulated prediction
-    predicted_emotion = random.choice(emotions)
-    return predicted_emotion, emotion_messages[predicted_emotion]
+        return dominant_emotion.capitalize(), message
+    except Exception as e:
+        return "Error", "Couldn't detect emotion. Try again."
