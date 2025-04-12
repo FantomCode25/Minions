@@ -1,7 +1,6 @@
 # 🚀 Project Name: MITRA
 
 **Team Name:** MINIONS 
-
 **Hackathon:** FantomCode'25  
 **Date:** 12/04/2024
 ---
