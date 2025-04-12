@@ -13,9 +13,25 @@ const WEBSOCKET_AUDIO_URL = "ws://localhost:8080/audio"; // WebSocket URL for au
 const WEBSOCKET_VIDEO_URL = "ws://localhost:8080/video"; // WebSocket URL for video
 
 // Send button click handler
-document.getElementById("send-btn").addEventListener("click", () => {
+document.getElementById("send-btn").addEventListener("click", async () => {
   const text = document.getElementById("text-input").value;
-  alert(`You sent: ${text}`);
+  if (!text.trim()) return;
+
+  try {
+    const response = await fetch("http://localhost:8080/chat", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ message: text }),
+    });
+
+    const data = await response.json();
+    alert(`Bot: ${data.response}`); // Replace this with your custom UI display logic
+  } catch (error) {
+    console.error("Error sending message:", error);
+    alert("Failed to connect to the chatbot backend.");
+  }
 });
 
 // Audio handling
