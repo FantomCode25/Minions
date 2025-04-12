@@ -1,29 +1,3 @@
-# Minions
-## Step 1: Create the frontend
-
-A simple website.
-
-## Step 2: Train the chatbot
-
-An empathetic, supportive chatbot that you can talk to about your day and any experiences you had, positive, negative, or neutral.
-
-## Step 3: Detecting facial expressions
-
-Using Deepface, train the model.
-
-## Step 4: Speech recognition
-
-Model training using a RAVDESS dataset.
-
-## Enabling audio recording and sending to the backend
-
-Using websockets
-
-# 🚀 Project Name: MITRA
-
-**Team Name:** MINIONS 
-**Hackathon:** FantomCode'25  
-**Date:** 12/04/2024
 
 ---
 
@@ -42,10 +16,7 @@ Using websockets
 ## 🧠 Introduction
 “MITRA - AN AI DRIVEN PTSD DETECTION & SUPPORT APP”
 
-
-
-
-
+A simple app that is your friend in need,a friend who listens and supports you anytime,anywhere and anyplace!
 
 ---
 
@@ -90,8 +61,21 @@ Setting a new industry standard for real-time, AI-driven emotional support, and 
 
 ### Prerequisites
 
-- Node.js / Python / other
-- Dependencies listed in `package.json` or `requirements.txt`
+
+flask 2.2.3
+gdown pysocks 1.7.1
+keras
+mtcnn-0.1.0
+numpy-2.2.4
+opencv-python-4.11.0.86
+deepface
+python 3.11.0
+
+transformers (version 4.0 or higher)
+datasets library
+torch
+chatbot dataset: heliosbrahma/mental_health_chatbot_dataset 
+bert model: distilbert-base-uncased-finetuned-sst-2-english
 
 ### Steps
 
