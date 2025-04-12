@@ -93,21 +93,22 @@ document.addEventListener("DOMContentLoaded", () => {
   // Video handling
   if (videoButton && videoElement && videoContainer) {
     videoButton.addEventListener("click", async () => {
-      if (frameInterval) {
+      if (isWebcamActive) {
         // Stop webcam and clear resources
-        clearInterval(frameInterval);
-        webcamStream.getTracks().forEach((track) => track.stop());
-        videoElement.srcObject = null;
-        videoContainer.style.display = "none";
+        clearInterval(frameInterval); // Stop sending frames to the server
+        webcamStream.getTracks().forEach((track) => track.stop()); // Stop webcam stream
+        videoElement.srcObject = null; // Clear video element's source
+        videoContainer.style.display = "none"; // Hide video container
         console.log("Webcam turned off.");
-        isWebcamActive = false;
+        isWebcamActive = false; // Update state to inactive
       } else {
         try {
+          // Start webcam recording
           webcamStream = await navigator.mediaDevices.getUserMedia({
             video: true,
-          });
-          videoElement.srcObject = webcamStream;
-          videoContainer.style.display = "block";
+          }); // Get webcam stream
+          videoElement.srcObject = webcamStream; // Set video element's source
+          videoContainer.style.display = "block"; // Show video container
           console.log("Webcam enabled successfully!");
 
           const canvas = document.createElement("canvas");
@@ -128,7 +129,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }, "image/jpeg");
           }, 200); // Send frames every 200ms
 
-          isWebcamActive = true;
+          isWebcamActive = true; // Update state to active
         } catch (error) {
           console.error("Error accessing webcam:", error);
           alert(`Unable to access webcam: ${error.message}`);
