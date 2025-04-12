@@ -171,6 +171,63 @@ def process_audio():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
+@app.route('/process_saved_audio', methods=['POST'])
+def process_saved_audio():
+    print("Processing audio file from 'audio_files' directory...")
+    try:
+        # Specify the path to the audio file
+        audio_file_name = request.json.get('file_name')  # Get the file name from the request
+        if not audio_file_name:
+            return jsonify({"error": "No file name provided"}), 400
+
+        audio_file_path = os.path.join("audio_files", audio_file_name)
+
+        # Check if the file exists
+        if not os.path.exists(audio_file_path):
+            return jsonify({"error": f"File '{audio_file_name}' not found in 'audio_files' directory"}), 404
+
+        # Load the audio file
+        audio_data, sr = librosa.load(audio_file_path, sr=44100)
+
+        # Process the audio file
+        audio_data = normalize_audio(audio_data)  # Normalize the audio
+        audio_data = reduce_noise(audio_data)  # Reduce background noise
+
+        # Analyze stress levels
+        stress_level = analyze_stress(audio_data)
+        print(f"Stress Level: {stress_level}")
+
+        # Transcribe audio
+        transcript = transcribe_audio(audio_data)
+        print(f"Transcript: {transcript}")
+
+        # Get AI response
+        if isinstance(transcript, str) and transcript.strip():
+            ai_response = asyncio.run(get_ai_response(transcript))
+            print(f"AI Response: {ai_response}")
+
+            # Convert AI response to speech
+            temp_audio_path = os.path.join(tempfile.gettempdir(), "ai_response.wav")
+            engine = pyttsx3.init()
+            engine.save_to_file(ai_response, temp_audio_path)
+            engine.runAndWait()
+
+            # Read the audio file and send it back to the client
+            with open(temp_audio_path, "rb") as audio_file:
+                audio_data = audio_file.read()
+
+            return jsonify({
+                "transcript": transcript,
+                "ai_response": ai_response,
+                "audio": audio_data.decode("latin1")  # Encode binary data as a string
+            })
+        else:
+            print("Invalid transcript.")
+            return jsonify({"transcript": "Invalid transcript", "ai_response": "", "audio": None})
+    except Exception as e:
+        print(f"Error processing audio file: {e}")
+        return jsonify({"error": str(e)}), 500
+
 if __name__ == "__main__":
     print("Starting Flask server...")
     socketio.run(app, host="127.0.0.1", port=5000, debug=False)
