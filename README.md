@@ -1,4 +1,8 @@
+# 🚀 Project Name: MITRA
 
+**Team Name:** MINIONS 
+**Hackathon:** FantomCode'25  
+**Date:** 12/04/2024
 ---
 
 ## 📖 Table of Contents
@@ -79,22 +83,29 @@ bert model: distilbert-base-uncased-finetuned-sst-2-english
 
 ### Steps
 
-```bash
-# Clone the repository
-git clone https://github.com/your-repo-url.git
+# Minions
+## Step 1: Create the frontend
 
-# Navigate into the project directory
-cd your-project
+A simple website.
 
-# Install dependencies
-npm install
+## Step 2: Train the chatbot
 
-# Start the development server
-npm start
+An empathetic, supportive chatbot that you can talk to about your day and any experiences you had, positive, negative, or neutral.
 
-_Include system architecture, data flow diagrams, or UI wireframes if available._
+## Step 3: Detecting facial expressions
 
-> 📌 **Tip:** You can add an image like this:
+Using Deepface, train the model.
+
+## Step 4: Speech recognition
+
+Model training using a RAVDESS dataset.
+
+## Enabling audio recording and sending to the backend
+
+Using websockets
+
+
+
 
 
 
