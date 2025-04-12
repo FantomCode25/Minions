@@ -74,6 +74,9 @@ numpy-2.2.4
 opencv-python-4.11.0.86
 deepface
 python 3.11.0
+pip install sounddevice numpy librosa pyttsx3 groq asyncio
+C:\Users\hp\myenv\Scripts\python.exe -m pip install --upgrade pip
+set GROQ_API_KEY=groq_api_key
 
 transformers (version 4.0 or higher)
 datasets library
@@ -98,7 +101,7 @@ Using Deepface, train the model.
 
 ## Step 4: Speech recognition
 
-Model training using a RAVDESS dataset.
+Takes in your message, analyses stress levels using librosa and sends out a responce
 
 ## Enabling audio recording and sending to the backend
 
